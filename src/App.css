@@ -27,7 +27,61 @@
 .App-link {
   color: #61dafb;
 }
+/* .card-price {
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+} */
+.card-img-top {
+  object-fit: cover;
+  height: 200px;
+}
 
+.card-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height:15rem;
+}
+
+.card-text {
+  font-size: 2rem;
+  font-weight: 600;
+  /* color: #28a745; Green color for price */
+  color:black
+}
+
+.card-body .btn {
+  margin-bottom: 5px;
+}
+
+.card-body .btn-sm {
+  padding: 0.25rem 0.5rem;
+}
+
+.card-body .d-flex button {
+  margin: 0 5px;
+}
+.card-price {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+}
+.button-size {
+  width:10rem;
+  height:2.5rem;
+}
+.search-bar {
+  display: flex;
+}
+.nav-items {
+  justify-content: flex-end;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
