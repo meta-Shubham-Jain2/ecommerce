@@ -14,10 +14,15 @@ const ProductCard = ({ product }) => {
   // Get cart items from Redux
   const cartItems = useSelector((state) => state.cart.items);
   const cartItem = cartItems.find((item) => item.id === product.id);
+  // const productId = product.id;
+
+  console.log("===>before",product.id)
 
   // Handle adding product to the cart
   const handleAddToCart = () => {
-    dispatch(addToCart(product)); // Add product to cart
+    dispatch(addToCart(product)); 
+    // dispatch(incrementQuantity(product.id))// Add product to cart
+    // console.log("===>dispatch",product.id)
   };
 
   // Handle incrementing quantity
@@ -43,7 +48,7 @@ const ProductCard = ({ product }) => {
           <img
             src={product.image}
             className="card-img-top"
-            alt={product.title}
+            // alt={product.title}
           />{" "}
         </Link>
         <div className="card-body">

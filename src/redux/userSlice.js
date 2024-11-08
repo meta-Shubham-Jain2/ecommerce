@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
+  
   user: JSON.parse(localStorage.getItem('user')) || null, // Load from localStorage if available
   loading: false,
   error: null,
@@ -42,6 +43,10 @@ const userSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    searchData:(state,action) => {
+      state.search = action.payload;
+      state.loading = false
+    }
   },
 });
 
@@ -53,6 +58,7 @@ export const {
   registerStart,
   registerSuccess,
   registerFailure,
+  searchData
 } = userSlice.actions;
 
 export default userSlice.reducer;

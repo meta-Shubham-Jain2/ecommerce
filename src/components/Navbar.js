@@ -3,27 +3,26 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/userSlice";
 import { FaShoppingCart } from "react-icons/fa";
+import { searchFunc , selectSearch } from "../redux/searchSlice";
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
   const cartItems = useSelector((state) => state.cart.items);
-  const [search, setSearch] = useState("");
-
-  //   // Get total quantity of items in the cart
-  //   const getCartItemCount = () => {
-  //     return cartItems.reduce((total, item) => total + item.quantity, 0);
-  //   };
+  const search = useSelector(selectSearch);
+ 
 
   const getTotalProductCount = () => {
     return cartItems.length; // Length of the array represents the number of unique products
   };
-  console.log("----", cartItems);
-  console.log("----local", localStorage.getItem("user"));
 
   const handleLogout = () => {
     dispatch(logout());
   };
+
+  const onClickSearch = (e) => {
+    dispatch(searchFunc(e.target.value))
+  }
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -39,15 +38,16 @@ const Navbar = () => {
             aria-label="Search"
             id="search"
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={onClickSearch}
             required
           />
-          <button
+          {/* <button
             className="btn btn-outline-success my-2 my-sm-0"
             type="submit"
+            onClick={onClickSearch}
           >
             Search
-          </button>
+          </button> */}
         </form>
         <div className="collapse navbar-collapse nav-items">
           <ul className="navbar-nav ml-auto">
