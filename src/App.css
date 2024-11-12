@@ -87,6 +87,9 @@
   height: 100px;
   width:100px;
 }
+.item-title-price {
+  width:500px
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

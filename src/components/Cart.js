@@ -35,7 +35,7 @@ const Cart = () => {
                       className="item-img"
                     />
                   </div>
-                  <div>
+                  <div className="item-title-price">
                     <h5>{item.title}</h5>
                     <p>Price: ${item.price}</p>
                   </div>
