@@ -9,6 +9,7 @@ import Cart from './components/Cart';
 import Login from './components/Login';
 import Register from './components/Register';
 import './App.css'
+import PageNotFound from './components/PageNotFound';
 
 const App = () => {
   return (
@@ -16,7 +17,8 @@ const App = () => {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={<ProductList />} />
+          <Route exact path="/" element={<ProductList />} />
+          <Route path="*" element={<PageNotFound />}/>
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />

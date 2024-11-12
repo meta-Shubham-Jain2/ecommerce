@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchProductById } from "../api/api";
 import { useDispatch, useSelector } from "react-redux";
+import { ShimmerContentBlock } from "react-shimmer-effects";
 import {
   addToCart,
   incrementQuantity,
@@ -11,12 +12,15 @@ import {
 
 const ProductDetail = () => {
   const { id } = useParams(); // Get the product id from the URL
-  const [product, setProduct] = useState();
+  const [product, setProduct] = useState({});
+  console.log("====>IDDD",id)
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
 
   const cartItems = useSelector((state) => state.cart.items);
+  // console.log("===item",item)
+  console.log("====ID",id)
   const cartItem = cartItems.find((item) => item.id === product.id);
 
   useEffect(() => {
@@ -51,7 +55,15 @@ const ProductDetail = () => {
     dispatch(removeFromCart(product.id)); // Remove product based on product ID
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div>
+    <ShimmerContentBlock
+        title
+        text
+        cta
+        thumbnailWidth={370}
+        thumbnailHeight={370}
+      />
+  </div>;
   if (error) return <div>{error}</div>;
 
   return (
@@ -109,6 +121,7 @@ const ProductDetail = () => {
                 </div>
               </div>
             )}
+
           </div>
         </div>
       )}

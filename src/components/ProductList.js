@@ -3,6 +3,8 @@ import ProductCard from "./ProductCard";
 import { fetchProducts } from "../api/api";
 import { useSelector } from "react-redux";
 import { selectSearch } from "../redux/searchSlice";
+// import PageNotFound from "./PageNotFound";
+import ShimmerEffect from "./ShimmerEffect";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -24,17 +26,10 @@ const ProductList = () => {
       });
   }, []);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div><ShimmerEffect /></div> 
+  
   if (error) return <div>Error: {error}</div>;
-  // .filter((ele) => {
-  //   if (searchData.length === 0) {
-  //     return ele;
-  //   } else {
-  //     return ele.name
-  //       .toLowerCase()
-  //       .includes(searchData.toLowerCase());
-  //   }
-  // })
+ 
   return (
     <>
       <div className="container">

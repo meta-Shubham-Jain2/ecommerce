@@ -29,6 +29,13 @@ const Cart = () => {
               <li key={item.id} className="list-group-item">
                 <div className="d-flex justify-content-between align-items-center">
                   <div>
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="item-img"
+                    />
+                  </div>
+                  <div>
                     <h5>{item.title}</h5>
                     <p>Price: ${item.price}</p>
                   </div>

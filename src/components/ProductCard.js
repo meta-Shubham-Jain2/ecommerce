@@ -48,7 +48,7 @@ const ProductCard = ({ product }) => {
           <img
             src={product.image}
             className="card-img-top"
-            // alt={product.title}
+            alt={product.title}
           />{" "}
         </Link>
         <div className="card-body">
