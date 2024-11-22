@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 // Initial cart state
 const initialState = {
@@ -8,7 +8,7 @@ const initialState = {
 
 // Create slice for cart management
 const cartSlice = createSlice({
-  name: 'cart',
+  name: "cart",
   initialState,
   reducers: {
     // Add product to cart (if not already in cart, else increase quantity)
@@ -21,13 +21,13 @@ const cartSlice = createSlice({
         state.items.push({ ...action.payload, quantity: 1 });
         // console.log("====Push",{...action.payload}) // Add new item with quantity 1
       }
-      localStorage.setItem('cart', JSON.stringify(state.items)); // Save cart to localStorage
+      localStorage.setItem("cart", JSON.stringify(state.items)); // Save cart to localStorage
     },
 
     // Remove product from cart based on product ID
     removeFromCart: (state, action) => {
       state.items = state.items.filter(item => item.id !== action.payload);
-      localStorage.setItem('cart', JSON.stringify(state.items)); // Save cart to localStorage
+      localStorage.setItem("cart", JSON.stringify(state.items)); // Save cart to localStorage
     },
 
     // Increment quantity of item in cart
@@ -39,11 +39,11 @@ const cartSlice = createSlice({
         if(item.quantity > 10){
           item.quantity = 10;
           alert("Maximum quantity you can add for this product is 10");
-          localStorage.setItem('cart', JSON.stringify(state.items))
+          localStorage.setItem("cart", JSON.stringify(state.items))
         }else if(item.quantity < 10){
-        localStorage.setItem('cart', JSON.stringify(state.items)); // Save cart to localStorage
+          localStorage.setItem("cart", JSON.stringify(state.items)); // Save cart to localStorage
+        }
       }
-    }
     },
 
     // Decrement quantity of item in cart
@@ -56,14 +56,14 @@ const cartSlice = createSlice({
           
           state.items = state.items.filter(item => item.id !== action.payload);
         }
-        localStorage.setItem('cart', JSON.stringify(state.items)); // Save cart to localStorage
+        localStorage.setItem("cart", JSON.stringify(state.items)); // Save cart to localStorage
       }
     },
 
     
     clearCart: (state) => {
       state.items = [];
-      localStorage.setItem('cart', JSON.stringify(state.items)); // Save empty cart to localStorage
+      localStorage.setItem("cart", JSON.stringify(state.items)); // Save empty cart to localStorage
     },
   },
 });

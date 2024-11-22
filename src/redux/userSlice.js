@@ -1,14 +1,16 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   
-  user: JSON.parse(localStorage.getItem('user')) || null, // Load from localStorage if available
+  user : '',
+  // user: JSON.parse(localStorage.getItem("user")) || null, // Load from localStorage if available
   loading: false,
+  login:false,
   error: null,
 };
 
 const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState,
   reducers: {
     loginStart: (state) => {
@@ -18,7 +20,8 @@ const userSlice = createSlice({
     loginSuccess: (state, action) => {
       state.user = action.payload;
       state.loading = false;
-      localStorage.setItem('user', JSON.stringify(action.payload)); // Save user to localStorage
+      state.login = true
+      localStorage.setItem("user", JSON.stringify(action.payload)); // Save user to localStorage
     },
     loginFailure: (state, action) => {
       state.loading = false;
@@ -26,8 +29,8 @@ const userSlice = createSlice({
     },
     logout: (state) => {
       state.user = null;
-      localStorage.removeItem('user'); 
-      localStorage.removeItem('cart')
+      localStorage.removeItem("user"); 
+      localStorage.removeItem("cart")
       // Remove user from localStorage
     },
     registerStart: (state) => {
@@ -37,7 +40,7 @@ const userSlice = createSlice({
     registerSuccess: (state, action) => {
       state.user = action.payload;
       state.loading = false;
-      localStorage.setItem('user', JSON.stringify(action.payload)); // Save user to localStorage
+      localStorage.setItem("user", JSON.stringify(action.payload)); // Save user to localStorage
     },
     registerFailure: (state, action) => {
       state.loading = false;

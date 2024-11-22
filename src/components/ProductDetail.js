@@ -57,12 +57,12 @@ const ProductDetail = () => {
 
   if (loading) return <div>
     <ShimmerContentBlock
-        title
-        text
-        cta
-        thumbnailWidth={370}
-        thumbnailHeight={370}
-      />
+      title
+      text
+      cta
+      thumbnailWidth={370}
+      thumbnailHeight={370}
+    />
   </div>;
   if (error) return <div>{error}</div>;
 
